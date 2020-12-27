@@ -2,6 +2,13 @@ package v1alpha1
 
 import metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
+const (
+	// KindKubeControllersConfiguration const
+	KindKubeControllersConfiguration     = "KubeControllersConfiguration"
+	// KindKubeControllersConfigurationList const
+	KindKubeControllersConfigurationList = "KubeControllersConfigurationList"
+)
+
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
@@ -89,4 +96,26 @@ type KubeControllersConfigurationList struct {
 	// +optional
 	metav1.ListMeta `json:"metadata,omitempty"`
 	Items           []KubeControllersConfiguration `json:"items"`
+}
+
+// NewKubeControllersConfiguration creates a new (zeroed) KubeControllersConfiguration struct with
+// the TypeMetadata initialized to the current version.
+func NewKubeControllersConfiguration() *KubeControllersConfiguration {
+	return &KubeControllersConfiguration{
+		TypeMeta: metav1.TypeMeta{
+			Kind:       KindKubeControllersConfiguration,
+			APIVersion: SchemeGroupVersion.String(),
+		},
+	}
+}
+
+// NewKubeControllersConfigurationList creates a new (zeroed) KubeControllersConfigurationList struct with the TypeMetadata
+// initialized to the current version.
+func NewKubeControllersConfigurationList() *KubeControllersConfigurationList {
+	return &KubeControllersConfigurationList{
+		TypeMeta: metav1.TypeMeta{
+			Kind:       KindKubeControllersConfigurationList,
+			APIVersion: SchemeGroupVersion.String(),
+		},
+	}
 }

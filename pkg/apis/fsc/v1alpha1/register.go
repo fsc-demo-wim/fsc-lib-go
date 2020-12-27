@@ -8,7 +8,7 @@ import (
 
 // SchemeGroupVersion your schema name and the version
 var SchemeGroupVersion = schema.GroupVersion{
-	Group:   "foo.com",
+	Group:   "fsc.henderiw.be",
 	Version: "v1",
 }
 
