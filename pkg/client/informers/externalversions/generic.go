@@ -21,7 +21,7 @@ package externalversions
 import (
 	"fmt"
 
-	v1alpha1 "github.com/henderiw/fsc-lib-go/pkg/apis/fsc/v1alpha1"
+	v1 "github.com/henderiw/fsc-lib-go/pkg/apis/fsc/v1"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 )
@@ -52,9 +52,9 @@ func (f *genericInformer) Lister() cache.GenericLister {
 // TODO extend this to unknown resources with a client pool
 func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource) (GenericInformer, error) {
 	switch resource {
-	// Group=fsc.henderiw.be, Version=v1alpha1
-	case v1alpha1.SchemeGroupVersion.WithResource("kubecontrollersconfigurations"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsc().V1alpha1().KubeControllersConfigurations().Informer()}, nil
+	// Group=fsc.henderiw.be, Version=v1
+	case v1.SchemeGroupVersion.WithResource("kubecontrollersconfigurations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsc().V1().KubeControllersConfigurations().Informer()}, nil
 
 	}
 

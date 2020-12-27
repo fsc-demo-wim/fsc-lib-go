@@ -2,4 +2,4 @@
 // +k8s:defaulter-gen=TypeMeta
 // +groupName=fsc.henderiw.be
 
-package v1alpha1
+package v1

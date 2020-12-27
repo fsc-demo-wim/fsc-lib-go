@@ -19,22 +19,22 @@ limitations under the License.
 package fake
 
 import (
-	v1alpha1 "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc/v1alpha1"
+	v1 "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc/v1"
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
 )
 
-type FakeFscV1alpha1 struct {
+type FakeFscV1 struct {
 	*testing.Fake
 }
 
-func (c *FakeFscV1alpha1) KubeControllersConfigurations(namespace string) v1alpha1.KubeControllersConfigurationInterface {
+func (c *FakeFscV1) KubeControllersConfigurations(namespace string) v1.KubeControllersConfigurationInterface {
 	return &FakeKubeControllersConfigurations{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
-func (c *FakeFscV1alpha1) RESTClient() rest.Interface {
+func (c *FakeFscV1) RESTClient() rest.Interface {
 	var ret *rest.RESTClient
 	return ret
 }

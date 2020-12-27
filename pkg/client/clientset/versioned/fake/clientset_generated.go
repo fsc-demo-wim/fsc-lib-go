@@ -20,8 +20,8 @@ package fake
 
 import (
 	clientset "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned"
-	fscv1alpha1 "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc/v1alpha1"
-	fakefscv1alpha1 "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc/v1alpha1/fake"
+	fscv1 "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc/v1"
+	fakefscv1 "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc/v1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"
@@ -76,7 +76,7 @@ func (c *Clientset) Tracker() testing.ObjectTracker {
 
 var _ clientset.Interface = &Clientset{}
 
-// FscV1alpha1 retrieves the FscV1alpha1Client
-func (c *Clientset) FscV1alpha1() fscv1alpha1.FscV1alpha1Interface {
-	return &fakefscv1alpha1.FakeFscV1alpha1{Fake: &c.Fake}
+// FscV1 retrieves the FscV1Client
+func (c *Clientset) FscV1() fscv1.FscV1Interface {
+	return &fakefscv1.FakeFscV1{Fake: &c.Fake}
 }

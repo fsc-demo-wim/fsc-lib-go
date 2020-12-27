@@ -21,7 +21,7 @@ package versioned
 import (
 	"fmt"
 
-	fscv1alpha1 "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc/v1alpha1"
+	fscv1 "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc/v1"
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
 	flowcontrol "k8s.io/client-go/util/flowcontrol"
@@ -29,19 +29,19 @@ import (
 
 type Interface interface {
 	Discovery() discovery.DiscoveryInterface
-	FscV1alpha1() fscv1alpha1.FscV1alpha1Interface
+	FscV1() fscv1.FscV1Interface
 }
 
 // Clientset contains the clients for groups. Each group has exactly one
 // version included in a Clientset.
 type Clientset struct {
 	*discovery.DiscoveryClient
-	fscV1alpha1 *fscv1alpha1.FscV1alpha1Client
+	fscV1 *fscv1.FscV1Client
 }
 
-// FscV1alpha1 retrieves the FscV1alpha1Client
-func (c *Clientset) FscV1alpha1() fscv1alpha1.FscV1alpha1Interface {
-	return c.fscV1alpha1
+// FscV1 retrieves the FscV1Client
+func (c *Clientset) FscV1() fscv1.FscV1Interface {
+	return c.fscV1
 }
 
 // Discovery retrieves the DiscoveryClient
@@ -65,7 +65,7 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 	}
 	var cs Clientset
 	var err error
-	cs.fscV1alpha1, err = fscv1alpha1.NewForConfig(&configShallowCopy)
+	cs.fscV1, err = fscv1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
 	}
@@ -81,7 +81,7 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 // panics if there is an error in the config.
 func NewForConfigOrDie(c *rest.Config) *Clientset {
 	var cs Clientset
-	cs.fscV1alpha1 = fscv1alpha1.NewForConfigOrDie(c)
+	cs.fscV1 = fscv1.NewForConfigOrDie(c)
 
 	cs.DiscoveryClient = discovery.NewDiscoveryClientForConfigOrDie(c)
 	return &cs
@@ -90,7 +90,7 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 // New creates a new Clientset for the given RESTClient.
 func New(c rest.Interface) *Clientset {
 	var cs Clientset
-	cs.fscV1alpha1 = fscv1alpha1.New(c)
+	cs.fscV1 = fscv1.New(c)
 
 	cs.DiscoveryClient = discovery.NewDiscoveryClient(c)
 	return &cs
