@@ -26,6 +26,8 @@ import (
 type Interface interface {
 	// KubeControllersConfigurations returns a KubeControllersConfigurationInformer.
 	KubeControllersConfigurations() KubeControllersConfigurationInformer
+	// KubeControllersConfigurationLists returns a KubeControllersConfigurationListInformer.
+	KubeControllersConfigurationLists() KubeControllersConfigurationListInformer
 }
 
 type version struct {
@@ -42,4 +44,9 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // KubeControllersConfigurations returns a KubeControllersConfigurationInformer.
 func (v *version) KubeControllersConfigurations() KubeControllersConfigurationInformer {
 	return &kubeControllersConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// KubeControllersConfigurationLists returns a KubeControllersConfigurationListInformer.
+func (v *version) KubeControllersConfigurationLists() KubeControllersConfigurationListInformer {
+	return &kubeControllersConfigurationListInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

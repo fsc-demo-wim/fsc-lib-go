@@ -32,6 +32,10 @@ func (c *FakeFscV1) KubeControllersConfigurations(namespace string) v1.KubeContr
 	return &FakeKubeControllersConfigurations{c, namespace}
 }
 
+func (c *FakeFscV1) KubeControllersConfigurationLists(namespace string) v1.KubeControllersConfigurationListInterface {
+	return &FakeKubeControllersConfigurationLists{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeFscV1) RESTClient() rest.Interface {

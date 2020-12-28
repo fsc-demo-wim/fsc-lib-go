@@ -46,8 +46,8 @@ type ControllersConfig struct {
 	// Multus enables and configures the multus controller. Enabled by default, set to nil to disable.
 	Multus *MultusControllerConfig `json:"multus,omitempty"`
 
-	// Configmap enables and configures the Configmap controller. Enabled by default, set to nil to disable.
-	Configmap *ConfigmapControllerConfig `json:"configmap,omitempty"`
+	// ConfigMap enables and configures the ConfigMap controller. Enabled by default, set to nil to disable.
+	ConfigMap *ConfigMapControllerConfig `json:"configMap,omitempty"`
 }
 
 // NodeControllerConfig configures the node controller, which automatically cleans up configuration
@@ -69,8 +69,8 @@ type MultusControllerConfig struct {
 	ReconcilerPeriod *metav1.Duration `json:"reconcilerPeriod,omitempty" validate:"omitempty"`
 }
 
-// ConfigmapControllerConfig configures the configmap controller, which identifies the configured sriov config in the cluster
-type ConfigmapControllerConfig struct {
+// ConfigMapControllerConfig configures the configMap controller, which identifies the configured sriov config in the cluster
+type ConfigMapControllerConfig struct {
 	// ReconcilerPeriod is the period to perform reconciliation with the fsc datastore. [Default: 5m]
 	ReconcilerPeriod *metav1.Duration `json:"reconcilerPeriod,omitempty" validate:"omitempty"`
 }
@@ -88,6 +88,7 @@ type KubeControllersConfigurationStatus struct {
 	EnvironmentVars map[string]string `json:"environmentVars,omitempty"`
 }
 
+// +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // KubeControllersConfigurationList contains a list of KubeControllersConfiguration
