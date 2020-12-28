@@ -21,7 +21,7 @@ package externalversions
 import (
 	"fmt"
 
-	v1 "github.com/henderiw/fsc-lib-go/pkg/apis/fsc/v1"
+	v1 "github.com/henderiw/fsc-lib-go/pkg/apis/fsc.henderiw.be/v1"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 )
@@ -55,8 +55,6 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	// Group=fsc.henderiw.be, Version=v1
 	case v1.SchemeGroupVersion.WithResource("kubecontrollersconfigurations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsc().V1().KubeControllersConfigurations().Informer()}, nil
-	case v1.SchemeGroupVersion.WithResource("kubecontrollersconfigurationlists"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsc().V1().KubeControllersConfigurationLists().Informer()}, nil
 
 	}
 

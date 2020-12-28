@@ -21,7 +21,7 @@ package versioned
 import (
 	"fmt"
 
-	fscv1 "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc/v1"
+	fscv1 "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc.henderiw.be/v1"
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
 	flowcontrol "k8s.io/client-go/util/flowcontrol"

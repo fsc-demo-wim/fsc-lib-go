@@ -24,7 +24,7 @@ import (
 	time "time"
 
 	versioned "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned"
-	fsc "github.com/henderiw/fsc-lib-go/pkg/client/informers/externalversions/fsc"
+	fschenderiwbe "github.com/henderiw/fsc-lib-go/pkg/client/informers/externalversions/fsc.henderiw.be"
 	internalinterfaces "github.com/henderiw/fsc-lib-go/pkg/client/informers/externalversions/internalinterfaces"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
@@ -172,9 +172,9 @@ type SharedInformerFactory interface {
 	ForResource(resource schema.GroupVersionResource) (GenericInformer, error)
 	WaitForCacheSync(stopCh <-chan struct{}) map[reflect.Type]bool
 
-	Fsc() fsc.Interface
+	Fsc() fschenderiwbe.Interface
 }
 
-func (f *sharedInformerFactory) Fsc() fsc.Interface {
-	return fsc.New(f, f.namespace, f.tweakListOptions)
+func (f *sharedInformerFactory) Fsc() fschenderiwbe.Interface {
+	return fschenderiwbe.New(f, f.namespace, f.tweakListOptions)
 }

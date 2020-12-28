@@ -21,7 +21,7 @@ package fake
 import (
 	"context"
 
-	fscv1 "github.com/henderiw/fsc-lib-go/pkg/apis/fsc/v1"
+	fschenderiwbev1 "github.com/henderiw/fsc-lib-go/pkg/apis/fsc.henderiw.be/v1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -41,20 +41,20 @@ var kubecontrollersconfigurationsResource = schema.GroupVersionResource{Group: "
 var kubecontrollersconfigurationsKind = schema.GroupVersionKind{Group: "fsc.henderiw.be", Version: "v1", Kind: "KubeControllersConfiguration"}
 
 // Get takes name of the kubeControllersConfiguration, and returns the corresponding kubeControllersConfiguration object, and an error if there is any.
-func (c *FakeKubeControllersConfigurations) Get(ctx context.Context, name string, options v1.GetOptions) (result *fscv1.KubeControllersConfiguration, err error) {
+func (c *FakeKubeControllersConfigurations) Get(ctx context.Context, name string, options v1.GetOptions) (result *fschenderiwbev1.KubeControllersConfiguration, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewGetAction(kubecontrollersconfigurationsResource, c.ns, name), &fscv1.KubeControllersConfiguration{})
+		Invokes(testing.NewGetAction(kubecontrollersconfigurationsResource, c.ns, name), &fschenderiwbev1.KubeControllersConfiguration{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*fscv1.KubeControllersConfiguration), err
+	return obj.(*fschenderiwbev1.KubeControllersConfiguration), err
 }
 
 // List takes label and field selectors, and returns the list of KubeControllersConfigurations that match those selectors.
-func (c *FakeKubeControllersConfigurations) List(ctx context.Context, opts v1.ListOptions) (result *fscv1.KubeControllersConfigurationList, err error) {
+func (c *FakeKubeControllersConfigurations) List(ctx context.Context, opts v1.ListOptions) (result *fschenderiwbev1.KubeControllersConfigurationList, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewListAction(kubecontrollersconfigurationsResource, kubecontrollersconfigurationsKind, c.ns, opts), &fscv1.KubeControllersConfigurationList{})
+		Invokes(testing.NewListAction(kubecontrollersconfigurationsResource, kubecontrollersconfigurationsKind, c.ns, opts), &fschenderiwbev1.KubeControllersConfigurationList{})
 
 	if obj == nil {
 		return nil, err
@@ -64,8 +64,8 @@ func (c *FakeKubeControllersConfigurations) List(ctx context.Context, opts v1.Li
 	if label == nil {
 		label = labels.Everything()
 	}
-	list := &fscv1.KubeControllersConfigurationList{ListMeta: obj.(*fscv1.KubeControllersConfigurationList).ListMeta}
-	for _, item := range obj.(*fscv1.KubeControllersConfigurationList).Items {
+	list := &fschenderiwbev1.KubeControllersConfigurationList{ListMeta: obj.(*fschenderiwbev1.KubeControllersConfigurationList).ListMeta}
+	for _, item := range obj.(*fschenderiwbev1.KubeControllersConfigurationList).Items {
 		if label.Matches(labels.Set(item.Labels)) {
 			list.Items = append(list.Items, item)
 		}
@@ -81,43 +81,43 @@ func (c *FakeKubeControllersConfigurations) Watch(ctx context.Context, opts v1.L
 }
 
 // Create takes the representation of a kubeControllersConfiguration and creates it.  Returns the server's representation of the kubeControllersConfiguration, and an error, if there is any.
-func (c *FakeKubeControllersConfigurations) Create(ctx context.Context, kubeControllersConfiguration *fscv1.KubeControllersConfiguration, opts v1.CreateOptions) (result *fscv1.KubeControllersConfiguration, err error) {
+func (c *FakeKubeControllersConfigurations) Create(ctx context.Context, kubeControllersConfiguration *fschenderiwbev1.KubeControllersConfiguration, opts v1.CreateOptions) (result *fschenderiwbev1.KubeControllersConfiguration, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewCreateAction(kubecontrollersconfigurationsResource, c.ns, kubeControllersConfiguration), &fscv1.KubeControllersConfiguration{})
+		Invokes(testing.NewCreateAction(kubecontrollersconfigurationsResource, c.ns, kubeControllersConfiguration), &fschenderiwbev1.KubeControllersConfiguration{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*fscv1.KubeControllersConfiguration), err
+	return obj.(*fschenderiwbev1.KubeControllersConfiguration), err
 }
 
 // Update takes the representation of a kubeControllersConfiguration and updates it. Returns the server's representation of the kubeControllersConfiguration, and an error, if there is any.
-func (c *FakeKubeControllersConfigurations) Update(ctx context.Context, kubeControllersConfiguration *fscv1.KubeControllersConfiguration, opts v1.UpdateOptions) (result *fscv1.KubeControllersConfiguration, err error) {
+func (c *FakeKubeControllersConfigurations) Update(ctx context.Context, kubeControllersConfiguration *fschenderiwbev1.KubeControllersConfiguration, opts v1.UpdateOptions) (result *fschenderiwbev1.KubeControllersConfiguration, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewUpdateAction(kubecontrollersconfigurationsResource, c.ns, kubeControllersConfiguration), &fscv1.KubeControllersConfiguration{})
+		Invokes(testing.NewUpdateAction(kubecontrollersconfigurationsResource, c.ns, kubeControllersConfiguration), &fschenderiwbev1.KubeControllersConfiguration{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*fscv1.KubeControllersConfiguration), err
+	return obj.(*fschenderiwbev1.KubeControllersConfiguration), err
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKubeControllersConfigurations) UpdateStatus(ctx context.Context, kubeControllersConfiguration *fscv1.KubeControllersConfiguration, opts v1.UpdateOptions) (*fscv1.KubeControllersConfiguration, error) {
+func (c *FakeKubeControllersConfigurations) UpdateStatus(ctx context.Context, kubeControllersConfiguration *fschenderiwbev1.KubeControllersConfiguration, opts v1.UpdateOptions) (*fschenderiwbev1.KubeControllersConfiguration, error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewUpdateSubresourceAction(kubecontrollersconfigurationsResource, "status", c.ns, kubeControllersConfiguration), &fscv1.KubeControllersConfiguration{})
+		Invokes(testing.NewUpdateSubresourceAction(kubecontrollersconfigurationsResource, "status", c.ns, kubeControllersConfiguration), &fschenderiwbev1.KubeControllersConfiguration{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*fscv1.KubeControllersConfiguration), err
+	return obj.(*fschenderiwbev1.KubeControllersConfiguration), err
 }
 
 // Delete takes name of the kubeControllersConfiguration and deletes it. Returns an error if one occurs.
 func (c *FakeKubeControllersConfigurations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewDeleteAction(kubecontrollersconfigurationsResource, c.ns, name), &fscv1.KubeControllersConfiguration{})
+		Invokes(testing.NewDeleteAction(kubecontrollersconfigurationsResource, c.ns, name), &fschenderiwbev1.KubeControllersConfiguration{})
 
 	return err
 }
@@ -126,17 +126,17 @@ func (c *FakeKubeControllersConfigurations) Delete(ctx context.Context, name str
 func (c *FakeKubeControllersConfigurations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	action := testing.NewDeleteCollectionAction(kubecontrollersconfigurationsResource, c.ns, listOpts)
 
-	_, err := c.Fake.Invokes(action, &fscv1.KubeControllersConfigurationList{})
+	_, err := c.Fake.Invokes(action, &fschenderiwbev1.KubeControllersConfigurationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched kubeControllersConfiguration.
-func (c *FakeKubeControllersConfigurations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *fscv1.KubeControllersConfiguration, err error) {
+func (c *FakeKubeControllersConfigurations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *fschenderiwbev1.KubeControllersConfiguration, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewPatchSubresourceAction(kubecontrollersconfigurationsResource, c.ns, name, pt, data, subresources...), &fscv1.KubeControllersConfiguration{})
+		Invokes(testing.NewPatchSubresourceAction(kubecontrollersconfigurationsResource, c.ns, name, pt, data, subresources...), &fschenderiwbev1.KubeControllersConfiguration{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*fscv1.KubeControllersConfiguration), err
+	return obj.(*fschenderiwbev1.KubeControllersConfiguration), err
 }

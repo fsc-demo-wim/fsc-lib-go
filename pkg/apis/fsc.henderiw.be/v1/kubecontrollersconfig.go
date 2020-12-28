@@ -88,7 +88,6 @@ type KubeControllersConfigurationStatus struct {
 	EnvironmentVars map[string]string `json:"environmentVars,omitempty"`
 }
 
-// +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // KubeControllersConfigurationList contains a list of KubeControllersConfiguration

@@ -19,7 +19,7 @@ limitations under the License.
 package fake
 
 import (
-	v1 "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc/v1"
+	v1 "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc.henderiw.be/v1"
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
 )
@@ -30,10 +30,6 @@ type FakeFscV1 struct {
 
 func (c *FakeFscV1) KubeControllersConfigurations(namespace string) v1.KubeControllersConfigurationInterface {
 	return &FakeKubeControllersConfigurations{c, namespace}
-}
-
-func (c *FakeFscV1) KubeControllersConfigurationLists(namespace string) v1.KubeControllersConfigurationListInterface {
-	return &FakeKubeControllersConfigurationLists{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

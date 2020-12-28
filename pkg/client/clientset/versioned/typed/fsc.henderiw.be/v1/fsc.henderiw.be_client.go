@@ -19,7 +19,7 @@ limitations under the License.
 package v1
 
 import (
-	v1 "github.com/henderiw/fsc-lib-go/pkg/apis/fsc/v1"
+	v1 "github.com/henderiw/fsc-lib-go/pkg/apis/fsc.henderiw.be/v1"
 	"github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/scheme"
 	rest "k8s.io/client-go/rest"
 )
@@ -37,11 +37,6 @@ type FscV1Client struct {
 func (c *FscV1Client) KubeControllersConfigurations(namespace string) KubeControllersConfigurationInterface {
 	return newKubeControllersConfigurations(c, namespace)
 }
-
-func (c *FscV1Client) KubeControllersConfigurationLists(namespace string) KubeControllersConfigurationListInterface {
-	return newKubeControllersConfigurationLists(c, namespace)
-}
-
 
 // NewForConfig creates a new FscV1Client for the given config.
 func NewForConfig(c *rest.Config) (*FscV1Client, error) {

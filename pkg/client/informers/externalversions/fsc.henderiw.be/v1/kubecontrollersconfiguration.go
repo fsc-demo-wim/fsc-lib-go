@@ -22,10 +22,10 @@ import (
 	"context"
 	time "time"
 
-	fscv1 "github.com/henderiw/fsc-lib-go/pkg/apis/fsc/v1"
+	fschenderiwbev1 "github.com/henderiw/fsc-lib-go/pkg/apis/fsc.henderiw.be/v1"
 	versioned "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned"
 	internalinterfaces "github.com/henderiw/fsc-lib-go/pkg/client/informers/externalversions/internalinterfaces"
-	v1 "github.com/henderiw/fsc-lib-go/pkg/client/listers/fsc/v1"
+	v1 "github.com/henderiw/fsc-lib-go/pkg/client/listers/fsc.henderiw.be/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"
@@ -71,7 +71,7 @@ func NewFilteredKubeControllersConfigurationInformer(client versioned.Interface,
 				return client.FscV1().KubeControllersConfigurations(namespace).Watch(context.TODO(), options)
 			},
 		},
-		&fscv1.KubeControllersConfiguration{},
+		&fschenderiwbev1.KubeControllersConfiguration{},
 		resyncPeriod,
 		indexers,
 	)
@@ -82,7 +82,7 @@ func (f *kubeControllersConfigurationInformer) defaultInformer(client versioned.
 }
 
 func (f *kubeControllersConfigurationInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&fscv1.KubeControllersConfiguration{}, f.defaultInformer)
+	return f.factory.InformerFor(&fschenderiwbev1.KubeControllersConfiguration{}, f.defaultInformer)
 }
 
 func (f *kubeControllersConfigurationInformer) Lister() v1.KubeControllersConfigurationLister {

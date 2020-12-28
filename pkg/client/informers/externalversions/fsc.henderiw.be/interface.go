@@ -19,7 +19,7 @@ limitations under the License.
 package fsc
 
 import (
-	v1 "github.com/henderiw/fsc-lib-go/pkg/client/informers/externalversions/fsc/v1"
+	v1 "github.com/henderiw/fsc-lib-go/pkg/client/informers/externalversions/fsc.henderiw.be/v1"
 	internalinterfaces "github.com/henderiw/fsc-lib-go/pkg/client/informers/externalversions/internalinterfaces"
 )
 

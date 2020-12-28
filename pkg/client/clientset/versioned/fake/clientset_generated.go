@@ -20,8 +20,8 @@ package fake
 
 import (
 	clientset "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned"
-	fscv1 "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc/v1"
-	fakefscv1 "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc/v1/fake"
+	fscv1 "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc.henderiw.be/v1"
+	fakefscv1 "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc.henderiw.be/v1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"
