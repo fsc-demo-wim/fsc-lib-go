@@ -25,8 +25,8 @@ type KubeControllersConfiguration struct {
 
 // KubeControllersConfigurationSpec defines the desired state of KubeControllersConfiguration
 type KubeControllersConfigurationSpec struct {
-	// LogSeverity is the log severity above which logs are sent to the stdout. [Default: Info]
-	LogSeverity string `json:"logSeverity,omitempty" validate:"omitempty"`
+	// LogLevel is the log level above which logs are sent to the stdout. [Default: Info]
+	LogLevel string `json:"logLevel,omitempty" validate:"omitempty"`
 
 	// HealthChecks enables or disables support for health checks [Default: Enabled]
 	HealthChecks string `json:"healthChecks,omitempty" validate:"omitempty,oneof=Enabled Disabled"`
