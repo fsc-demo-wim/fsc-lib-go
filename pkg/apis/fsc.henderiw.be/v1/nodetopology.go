@@ -53,6 +53,9 @@ type Endpoint struct {
 	// InterfaceIdentifier defines the identifier of the interface
 	InterfaceIdentifier string `json:"interfaceIdentifier,omitempty"`
 
+	// InterfaceIdentifierType defines the type of the interface identifier
+	InterfaceIdentifierType string `json:"interfaceIdentifierType,omitempty"`
+
 	// MTU defines the endpoint MTU
 	MTU int `json:"mtu,omitempty"`
 
