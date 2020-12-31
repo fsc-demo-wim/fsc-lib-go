@@ -1,0 +1,16 @@
+apiVersion: fsc.henderiw.be/v1
+kind: KubeControllersConfiguration
+metadata:
+  name: default
+spec:
+  controllers:
+    node:
+      reconcilerPeriod: 5m
+    namespace:
+      reconcilerPeriod: 5m
+    multus:
+      reconcilerPeriod: 5m
+    configMap:
+      reconcilerPeriod: 5m
+  healthChecks: Enabled
+  logLevel: Info

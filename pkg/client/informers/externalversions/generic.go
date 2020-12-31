@@ -55,6 +55,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	// Group=fsc.henderiw.be, Version=v1
 	case v1.SchemeGroupVersion.WithResource("kubecontrollersconfigurations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsc().V1().KubeControllersConfigurations().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("nodetopologies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsc().V1().NodeTopologies().Informer()}, nil
 
 	}
 

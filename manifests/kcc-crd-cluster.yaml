@@ -1,0 +1,169 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: kubecontrollersconfigurations.fsc.henderiw.be
+spec:
+  group: fsc.henderiw.be
+  names:
+    kind: KubeControllersConfiguration
+    listKind: KubeControllersConfigurationList
+    plural: kubecontrollersconfigurations
+    singular: kubecontrollersconfiguration
+  scope: Cluster
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KubeControllersConfigurationSpec contains the values of the
+              Kubernetes controllers configuration.
+            properties:
+              controllers:
+                description: Controllers enables and configures individual Kubernetes
+                  controllers
+                properties:
+                  namespace:
+                    description: Namespace enables and configures the namespace controller.
+                      Enabled by default, set to nil to disable.
+                    properties:
+                      reconcilerPeriod:
+                        description: 'ReconcilerPeriod is the period to perform reconciliation
+                          with the FSC datastore. [Default: 5m]'
+                        type: string
+                    type: object
+                  node:
+                    description: Node enables and configures the node controller.
+                      Enabled by default, set to nil to disable.
+                    properties:
+                      reconcilerPeriod:
+                        description: 'ReconcilerPeriod is the period to perform reconciliation
+                          with the FSC datastore. [Default: 5m]'
+                        type: string
+                    type: object
+                  multus:
+                    description: multus enables and configures the multus controller.
+                      Enabled by default, set to nil to disable.
+                    properties:
+                      reconcilerPeriod:
+                        description: 'ReconcilerPeriod is the period to perform reconciliation
+                          with the FSC datastore. [Default: 5m]'
+                        type: string
+                    type: object
+                  configMap:
+                    description: configMap enables and configures the configMap
+                      controller. Enabled by default, set to nil to disable.
+                    properties:
+                      reconcilerPeriod:
+                        description: 'ReconcilerPeriod is the period to perform reconciliation
+                          with the FSC datastore. [Default: 5m]'
+                        type: string
+                    type: object
+                type: object
+              healthChecks:
+                description: 'HealthChecks enables or disables support for health
+                  checks [Default: Enabled]'
+                type: string
+              logLevel:
+                description: 'logLevel is the log level above which logs
+                  are sent to the stdout. [Default: Info]'
+                type: string
+            required:
+            - controllers
+            type: object
+          status:
+            description: KubeControllersConfigurationStatus represents the status
+              of the configuration. It's useful for admins to be able to see the actual
+              config that was applied, which can be modified by environment variables
+              on the kube-controllers process.
+            properties:
+              environmentVars:
+                additionalProperties:
+                  type: string
+                description: EnvironmentVars contains the environment variables on
+                  the kube-controllers that influenced the RunningConfig.
+                type: object
+              runningConfig:
+                description: RunningConfig contains the effective config that is running
+                  in the kube-controllers pod, after merging the API resource with
+                  any environment variables.
+                properties:
+                  controllers:
+                    description: Controllers enables and configures individual Kubernetes
+                      controllers
+                    properties:
+                      namespace:
+                        description: Namespace enables and configures the namespace
+                          controller. Enabled by default, set to nil to disable.
+                        properties:
+                          reconcilerPeriod:
+                            description: 'ReconcilerPeriod is the period to perform
+                              reconciliation with the FSC datastore. [Default:
+                              5m]'
+                            type: string
+                        type: object
+                      node:
+                        description: Node enables and configures the node controller.
+                          Enabled by default, set to nil to disable.
+                        properties:
+                          reconcilerPeriod:
+                            description: 'ReconcilerPeriod is the period to perform
+                              reconciliation with the FSC datastore. [Default:
+                              5m]'
+                            type: string
+                        type: object
+                      multus:
+                        description: multus enables and configures the multus controller.
+                          Enabled by default, set to nil to disable.
+                        properties:
+                          reconcilerPeriod:
+                            description: 'ReconcilerPeriod is the period to perform
+                              reconciliation with the FSC datastore. [Default:
+                              5m]'
+                            type: string
+                        type: object
+                      configMap:
+                        description: configMap enables and configures the configMap
+                          controller. Enabled by default, set to nil to disable.
+                        properties:
+                          reconcilerPeriod:
+                            description: 'ReconcilerPeriod is the period to perform
+                              reconciliation with the FSC datastore. [Default:
+                              5m]'
+                            type: string
+                        type: object
+                    type: object
+                  healthChecks:
+                    description: 'HealthChecks enables or disables support for health
+                      checks [Default: Enabled]'
+                    type: string
+                  logLevel:
+                    description: 'logLevel is the log level above which
+                      logs are sent to the stdout. [Default: Info]'
+                    type: string
+                required:
+                - controllers
+                type: object
+            type: object
+        type: object
+    served: true
+    storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

@@ -1,0 +1,27 @@
+apiVersion: fsc.henderiw.be/v1
+kind: NodeTopology
+metadata:
+  name: hypervisor-1
+spec:
+  devices:
+  - name: switch1
+    kind: wbx
+    deviceIdentifier: d0:99:d5:e1:e2:41
+    deviceIdentifierType: mac
+    endpoints:
+    - name: eno6
+      remoteInterfaceIdentifier: 36306944
+      mtu: 1500
+      lag: true
+      vlans:
+      - id: 100
+      - id: 103
+      - id: 102
+    - name: ens2f0
+      remoteInterfaceIdentifier: 36306935
+      mtu: 1500
+      lag: true
+      vlans:
+      - id: 100
+      - id: 103
+      - id: 102

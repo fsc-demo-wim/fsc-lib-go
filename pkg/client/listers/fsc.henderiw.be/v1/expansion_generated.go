@@ -25,3 +25,11 @@ type KubeControllersConfigurationListerExpansion interface{}
 // KubeControllersConfigurationNamespaceListerExpansion allows custom methods to be added to
 // KubeControllersConfigurationNamespaceLister.
 type KubeControllersConfigurationNamespaceListerExpansion interface{}
+
+// NodeTopologyListerExpansion allows custom methods to be added to
+// NodeTopologyLister.
+type NodeTopologyListerExpansion interface{}
+
+// NodeTopologyNamespaceListerExpansion allows custom methods to be added to
+// NodeTopologyNamespaceLister.
+type NodeTopologyNamespaceListerExpansion interface{}

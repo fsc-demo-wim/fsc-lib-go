@@ -38,6 +38,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		SchemeGroupVersion,
 		&KubeControllersConfiguration{},
 		&KubeControllersConfigurationList{},
+		&NodeTopology{},
+		&NodeTopologyList{},
 	)
 
 	scheme.AddKnownTypes(

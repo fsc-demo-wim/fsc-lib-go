@@ -32,7 +32,7 @@ type KubeControllersConfigurationSpec struct {
 	HealthChecks string `json:"healthChecks,omitempty" validate:"omitempty,oneof=Enabled Disabled"`
 
 	// Controllers enables and configures individual Kubernetes controllers
-	Controllers ControllersConfig `json:"controllers"`
+	Controllers *ControllersConfig `json:"controllers"`
 }
 
 // ControllersConfig enables and configures individual Kubernetes controllers

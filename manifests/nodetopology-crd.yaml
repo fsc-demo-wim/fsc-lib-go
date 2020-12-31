@@ -1,0 +1,85 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: nodetopologys.fsc.henderiw.be
+spec:
+  group: fsc.henderiw.be
+  names:
+    kind: NodeTopology
+    listKind: NodeTopologyList
+    plural: nodetopologys
+    singular: nodetopology
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: nodetopology spec defines the switch topology parameters
+            properties:
+              devices:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    kind:
+                      type: string
+                    deviceIdentifier:
+                      type: string
+                    deviceIdentifierType:
+                      type: string
+                    endpoints:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          remoteInterfaceIdentifier:
+                            type: string
+                          mtu:
+                            type: integer
+                          lag:
+                            type: boolean
+                          vlans:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                              required:
+                              - id
+                        required:
+                        - name
+                  required:
+                  - name
+            required:
+            - devices
+            type: object
+        type: object
+    served: true
+    storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+

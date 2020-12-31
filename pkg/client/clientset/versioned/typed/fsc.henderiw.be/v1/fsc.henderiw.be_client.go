@@ -27,6 +27,7 @@ import (
 type FscV1Interface interface {
 	RESTClient() rest.Interface
 	KubeControllersConfigurationsGetter
+	NodeTopologiesGetter
 }
 
 // FscV1Client is used to interact with features provided by the fsc.henderiw.be group.
@@ -36,6 +37,10 @@ type FscV1Client struct {
 
 func (c *FscV1Client) KubeControllersConfigurations(namespace string) KubeControllersConfigurationInterface {
 	return newKubeControllersConfigurations(c, namespace)
+}
+
+func (c *FscV1Client) NodeTopologies(namespace string) NodeTopologyInterface {
+	return newNodeTopologies(c, namespace)
 }
 
 // NewForConfig creates a new FscV1Client for the given config.
