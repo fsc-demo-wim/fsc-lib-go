@@ -11,6 +11,7 @@ const (
 
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +k8s:openapi-gen=true
 
 // NodeTopology is the Schema for the node topology API
 type NodeTopology struct {
@@ -36,13 +37,13 @@ type Device struct {
 	Kind string `json:"kind,omitempty"`
 
 	// DeviceIndentifier defines the id of the device
-	DeviceIndentifier string `json:"deviceIdentifier,omitempty"`
+	DeviceIdentifier string `json:"deviceIdentifier,omitempty"`
 
 	// DeviceIndentifier defines the type of the device identifier
-	DeviceIndentifierType string `json:"deviceIdentifierType,omitempty"`
+	DeviceIdentifierType string `json:"deviceIdentifierType,omitempty"`
 
 	// Endpoints defines the endpoints attached to the device
-	Endpoints []*Endpoint
+	Endpoints []*Endpoint `json:"endpoints,omitempty"`
 }
 
 // Endpoint defines the Endpoint attributes
@@ -63,7 +64,7 @@ type Endpoint struct {
 	LAG bool `json:"lag,omitempty"`
 
 	// Vlans defines the vlans attached to the endpoint
-	Vlans []*Vlan
+	Vlans []*Vlan `json:"vlans,omitempty"`
 }
 
 // Vlan defines the vlan attributes
