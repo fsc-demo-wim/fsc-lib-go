@@ -51,7 +51,9 @@ spec:
                         properties:
                           name:
                             type: string
-                          remoteInterfaceIdentifier:
+                          interfaceIdentifier:
+                            type: string
+                          interfaceIdentifierType:
                             type: string
                           mtu:
                             type: integer

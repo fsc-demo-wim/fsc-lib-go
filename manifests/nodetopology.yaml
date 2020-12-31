@@ -10,7 +10,8 @@ spec:
     deviceIdentifierType: mac
     endpoints:
     - name: eno6
-      remoteInterfaceIdentifier: "36306944"
+      interfaceIdentifier: "36306944"
+      interfaceIdentifierType: local
       mtu: 1500
       lag: true
       vlans:
@@ -18,10 +19,10 @@ spec:
       - id: 103
       - id: 102
     - name: ens2f0
-      remoteInterfaceIdentifier: "36306935"
+      interfaceIdentifier: "36306935"
+      interfaceIdentifierType: local
       mtu: 1500
       lag: true
       vlans:
-      - id: 100
+      - id: 101
       - id: 103
-      - id: 102
