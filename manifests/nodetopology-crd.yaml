@@ -32,9 +32,8 @@ spec:
             description: nodetopology spec defines the switch topology parameters
             properties:
               devices:
-                type: array
+                description: the devices and related parameters on which this config is applied
                 items:
-                  type: object
                   required:
                   - name
                   properties:
@@ -47,11 +46,9 @@ spec:
                     deviceIdentifierType:
                       type: string
                     endpoints:
-                      type: array
-                      required:
-                      - name
                       items:
-                        type: object
+                        required:
+                        - name
                         properties:
                           name:
                             type: string
@@ -64,14 +61,18 @@ spec:
                           lag:
                             type: boolean
                           vlans:
-                            type: array
-                            required:
-                            - id
                             items:
-                              type: object
+                              required:
+                              - id
                               properties:
                                 id:
                                   type: integer
+                              type: object
+                            type: array
+                        type: object
+                      type: array
+                  type: object
+                type: array
             type: object
         type: object
     served: true
@@ -82,4 +83,3 @@ status:
     plural: ""
   conditions: []
   storedVersions: []
-

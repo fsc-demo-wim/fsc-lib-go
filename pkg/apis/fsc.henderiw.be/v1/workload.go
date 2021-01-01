@@ -19,7 +19,7 @@ type Workload struct {
 
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   NodeTopologySpec   `json:"spec,omitempty"`
+	Spec   WorkloadSpec   `json:"spec,omitempty"`
 
 	Status WorkloadStatus `json:"status,omitempty"`
 }
