@@ -1,13 +1,12 @@
 apiVersion: fsc.henderiw.be/v1
-namespace: fsc
 kind: Workload
 metadata:
-  name: workload-100
+  name: workload-103
 spec:
-  routeTarget: target:65000:100
+  routeTarget: target:65000:103
   routeDistinguisher: auto
   vlans:
-  - id: 100
+  - id: 103
   
 
   

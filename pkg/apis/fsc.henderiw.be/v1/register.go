@@ -40,6 +40,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&KubeControllersConfigurationList{},
 		&NodeTopology{},
 		&NodeTopologyList{},
+		&WorkLoad{},
+		&WorkLoadList{},
 	)
 
 	scheme.AddKnownTypes(
