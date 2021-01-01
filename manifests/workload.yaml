@@ -1,0 +1,13 @@
+apiVersion: fsc.henderiw.be/v1
+kind: Worload
+metadata:
+  name: workload1
+spec:
+  routeTarget: target:65000:100
+  routeDistinguisher: auto-rd
+  vlans:
+  - id: 100
+  
+
+  
+  

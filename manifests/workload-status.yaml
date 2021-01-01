@@ -1,0 +1,24 @@
+apiVersion: fsc.henderiw.be/v1
+kind: Worload
+metadata:
+  name: workload1
+spec:
+  routeTarget: target:65000:100
+  routeDistinguisher: auto-rd
+  vlans:
+  - id: 100
+  devices:
+  - name: switch1
+    kind: wbx
+    deviceIdentifier: d0:99:d5:e1:e2:41
+    deviceIdentifierType: mac
+    endpoints:
+    - name: eno6
+      interfaceIdentifier: "36306944"
+      interfaceIdentifierType: local
+      mtu: 1500
+      lag: true
+      vlans:
+      - id: 100
+  
+  

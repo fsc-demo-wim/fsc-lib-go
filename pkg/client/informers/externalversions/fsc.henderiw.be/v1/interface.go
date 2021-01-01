@@ -28,6 +28,8 @@ type Interface interface {
 	KubeControllersConfigurations() KubeControllersConfigurationInformer
 	// NodeTopologies returns a NodeTopologyInformer.
 	NodeTopologies() NodeTopologyInformer
+	// Workloads returns a WorkloadInformer.
+	Workloads() WorkloadInformer
 }
 
 type version struct {
@@ -49,4 +51,9 @@ func (v *version) KubeControllersConfigurations() KubeControllersConfigurationIn
 // NodeTopologies returns a NodeTopologyInformer.
 func (v *version) NodeTopologies() NodeTopologyInformer {
 	return &nodeTopologyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Workloads returns a WorkloadInformer.
+func (v *version) Workloads() WorkloadInformer {
+	return &workloadInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

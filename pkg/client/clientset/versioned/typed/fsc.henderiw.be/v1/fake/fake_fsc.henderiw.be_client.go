@@ -36,6 +36,10 @@ func (c *FakeFscV1) NodeTopologies(namespace string) v1.NodeTopologyInterface {
 	return &FakeNodeTopologies{c, namespace}
 }
 
+func (c *FakeFscV1) Workloads(namespace string) v1.WorkloadInterface {
+	return &FakeWorkloads{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeFscV1) RESTClient() rest.Interface {

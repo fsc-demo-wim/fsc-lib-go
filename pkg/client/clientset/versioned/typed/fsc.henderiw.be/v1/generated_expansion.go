@@ -21,3 +21,5 @@ package v1
 type KubeControllersConfigurationExpansion interface{}
 
 type NodeTopologyExpansion interface{}
+
+type WorkloadExpansion interface{}

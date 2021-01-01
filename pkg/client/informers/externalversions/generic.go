@@ -57,6 +57,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsc().V1().KubeControllersConfigurations().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("nodetopologies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsc().V1().NodeTopologies().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("workloads"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsc().V1().Workloads().Informer()}, nil
 
 	}
 
