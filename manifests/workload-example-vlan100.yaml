@@ -1,6 +1,6 @@
 apiVersion: fsc.henderiw.be/v1
 namespace: fsc
-kind: Workload
+kind: WorkLoad
 metadata:
   name: workload-100
 spec:

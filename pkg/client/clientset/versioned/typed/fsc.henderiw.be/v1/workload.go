@@ -30,43 +30,43 @@ import (
 	rest "k8s.io/client-go/rest"
 )
 
-// WorkloadsGetter has a method to return a WorkloadInterface.
+// WorkLoadsGetter has a method to return a WorkLoadInterface.
 // A group's client should implement this interface.
-type WorkloadsGetter interface {
-	Workloads(namespace string) WorkloadInterface
+type WorkLoadsGetter interface {
+	WorkLoads(namespace string) WorkLoadInterface
 }
 
-// WorkloadInterface has methods to work with Workload resources.
-type WorkloadInterface interface {
-	Create(ctx context.Context, workload *v1.Workload, opts metav1.CreateOptions) (*v1.Workload, error)
-	Update(ctx context.Context, workload *v1.Workload, opts metav1.UpdateOptions) (*v1.Workload, error)
-	UpdateStatus(ctx context.Context, workload *v1.Workload, opts metav1.UpdateOptions) (*v1.Workload, error)
+// WorkLoadInterface has methods to work with WorkLoad resources.
+type WorkLoadInterface interface {
+	Create(ctx context.Context, workLoad *v1.WorkLoad, opts metav1.CreateOptions) (*v1.WorkLoad, error)
+	Update(ctx context.Context, workLoad *v1.WorkLoad, opts metav1.UpdateOptions) (*v1.WorkLoad, error)
+	UpdateStatus(ctx context.Context, workLoad *v1.WorkLoad, opts metav1.UpdateOptions) (*v1.WorkLoad, error)
 	Delete(ctx context.Context, name string, opts metav1.DeleteOptions) error
 	DeleteCollection(ctx context.Context, opts metav1.DeleteOptions, listOpts metav1.ListOptions) error
-	Get(ctx context.Context, name string, opts metav1.GetOptions) (*v1.Workload, error)
-	List(ctx context.Context, opts metav1.ListOptions) (*v1.WorkloadList, error)
+	Get(ctx context.Context, name string, opts metav1.GetOptions) (*v1.WorkLoad, error)
+	List(ctx context.Context, opts metav1.ListOptions) (*v1.WorkLoadList, error)
 	Watch(ctx context.Context, opts metav1.ListOptions) (watch.Interface, error)
-	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts metav1.PatchOptions, subresources ...string) (result *v1.Workload, err error)
-	WorkloadExpansion
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts metav1.PatchOptions, subresources ...string) (result *v1.WorkLoad, err error)
+	WorkLoadExpansion
 }
 
-// workloads implements WorkloadInterface
-type workloads struct {
+// workLoads implements WorkLoadInterface
+type workLoads struct {
 	client rest.Interface
 	ns     string
 }
 
-// newWorkloads returns a Workloads
-func newWorkloads(c *FscV1Client, namespace string) *workloads {
-	return &workloads{
+// newWorkLoads returns a WorkLoads
+func newWorkLoads(c *FscV1Client, namespace string) *workLoads {
+	return &workLoads{
 		client: c.RESTClient(),
 		ns:     namespace,
 	}
 }
 
-// Get takes name of the workload, and returns the corresponding workload object, and an error if there is any.
-func (c *workloads) Get(ctx context.Context, name string, options metav1.GetOptions) (result *v1.Workload, err error) {
-	result = &v1.Workload{}
+// Get takes name of the workLoad, and returns the corresponding workLoad object, and an error if there is any.
+func (c *workLoads) Get(ctx context.Context, name string, options metav1.GetOptions) (result *v1.WorkLoad, err error) {
+	result = &v1.WorkLoad{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("workloads").
@@ -77,13 +77,13 @@ func (c *workloads) Get(ctx context.Context, name string, options metav1.GetOpti
 	return
 }
 
-// List takes label and field selectors, and returns the list of Workloads that match those selectors.
-func (c *workloads) List(ctx context.Context, opts metav1.ListOptions) (result *v1.WorkloadList, err error) {
+// List takes label and field selectors, and returns the list of WorkLoads that match those selectors.
+func (c *workLoads) List(ctx context.Context, opts metav1.ListOptions) (result *v1.WorkLoadList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
 	}
-	result = &v1.WorkloadList{}
+	result = &v1.WorkLoadList{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("workloads").
@@ -94,8 +94,8 @@ func (c *workloads) List(ctx context.Context, opts metav1.ListOptions) (result *
 	return
 }
 
-// Watch returns a watch.Interface that watches the requested workloads.
-func (c *workloads) Watch(ctx context.Context, opts metav1.ListOptions) (watch.Interface, error) {
+// Watch returns a watch.Interface that watches the requested workLoads.
+func (c *workLoads) Watch(ctx context.Context, opts metav1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -109,28 +109,28 @@ func (c *workloads) Watch(ctx context.Context, opts metav1.ListOptions) (watch.I
 		Watch(ctx)
 }
 
-// Create takes the representation of a workload and creates it.  Returns the server's representation of the workload, and an error, if there is any.
-func (c *workloads) Create(ctx context.Context, workload *v1.Workload, opts metav1.CreateOptions) (result *v1.Workload, err error) {
-	result = &v1.Workload{}
+// Create takes the representation of a workLoad and creates it.  Returns the server's representation of the workLoad, and an error, if there is any.
+func (c *workLoads) Create(ctx context.Context, workLoad *v1.WorkLoad, opts metav1.CreateOptions) (result *v1.WorkLoad, err error) {
+	result = &v1.WorkLoad{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("workloads").
 		VersionedParams(&opts, scheme.ParameterCodec).
-		Body(workload).
+		Body(workLoad).
 		Do(ctx).
 		Into(result)
 	return
 }
 
-// Update takes the representation of a workload and updates it. Returns the server's representation of the workload, and an error, if there is any.
-func (c *workloads) Update(ctx context.Context, workload *v1.Workload, opts metav1.UpdateOptions) (result *v1.Workload, err error) {
-	result = &v1.Workload{}
+// Update takes the representation of a workLoad and updates it. Returns the server's representation of the workLoad, and an error, if there is any.
+func (c *workLoads) Update(ctx context.Context, workLoad *v1.WorkLoad, opts metav1.UpdateOptions) (result *v1.WorkLoad, err error) {
+	result = &v1.WorkLoad{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("workloads").
-		Name(workload.Name).
+		Name(workLoad.Name).
 		VersionedParams(&opts, scheme.ParameterCodec).
-		Body(workload).
+		Body(workLoad).
 		Do(ctx).
 		Into(result)
 	return
@@ -138,22 +138,22 @@ func (c *workloads) Update(ctx context.Context, workload *v1.Workload, opts meta
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *workloads) UpdateStatus(ctx context.Context, workload *v1.Workload, opts metav1.UpdateOptions) (result *v1.Workload, err error) {
-	result = &v1.Workload{}
+func (c *workLoads) UpdateStatus(ctx context.Context, workLoad *v1.WorkLoad, opts metav1.UpdateOptions) (result *v1.WorkLoad, err error) {
+	result = &v1.WorkLoad{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("workloads").
-		Name(workload.Name).
+		Name(workLoad.Name).
 		SubResource("status").
 		VersionedParams(&opts, scheme.ParameterCodec).
-		Body(workload).
+		Body(workLoad).
 		Do(ctx).
 		Into(result)
 	return
 }
 
-// Delete takes name of the workload and deletes it. Returns an error if one occurs.
-func (c *workloads) Delete(ctx context.Context, name string, opts metav1.DeleteOptions) error {
+// Delete takes name of the workLoad and deletes it. Returns an error if one occurs.
+func (c *workLoads) Delete(ctx context.Context, name string, opts metav1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("workloads").
@@ -164,7 +164,7 @@ func (c *workloads) Delete(ctx context.Context, name string, opts metav1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *workloads) DeleteCollection(ctx context.Context, opts metav1.DeleteOptions, listOpts metav1.ListOptions) error {
+func (c *workLoads) DeleteCollection(ctx context.Context, opts metav1.DeleteOptions, listOpts metav1.ListOptions) error {
 	var timeout time.Duration
 	if listOpts.TimeoutSeconds != nil {
 		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
@@ -179,9 +179,9 @@ func (c *workloads) DeleteCollection(ctx context.Context, opts metav1.DeleteOpti
 		Error()
 }
 
-// Patch applies the patch and returns the patched workload.
-func (c *workloads) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts metav1.PatchOptions, subresources ...string) (result *v1.Workload, err error) {
-	result = &v1.Workload{}
+// Patch applies the patch and returns the patched workLoad.
+func (c *workLoads) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts metav1.PatchOptions, subresources ...string) (result *v1.WorkLoad, err error) {
+	result = &v1.WorkLoad{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("workloads").

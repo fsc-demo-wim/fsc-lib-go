@@ -22,4 +22,4 @@ type KubeControllersConfigurationExpansion interface{}
 
 type NodeTopologyExpansion interface{}
 
-type WorkloadExpansion interface{}
+type WorkLoadExpansion interface{}

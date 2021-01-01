@@ -32,59 +32,59 @@ import (
 	cache "k8s.io/client-go/tools/cache"
 )
 
-// WorkloadInformer provides access to a shared informer and lister for
-// Workloads.
-type WorkloadInformer interface {
+// WorkLoadInformer provides access to a shared informer and lister for
+// WorkLoads.
+type WorkLoadInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1.WorkloadLister
+	Lister() v1.WorkLoadLister
 }
 
-type workloadInformer struct {
+type workLoadInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 	namespace        string
 }
 
-// NewWorkloadInformer constructs a new informer for Workload type.
+// NewWorkLoadInformer constructs a new informer for WorkLoad type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewWorkloadInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredWorkloadInformer(client, namespace, resyncPeriod, indexers, nil)
+func NewWorkLoadInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredWorkLoadInformer(client, namespace, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredWorkloadInformer constructs a new informer for Workload type.
+// NewFilteredWorkLoadInformer constructs a new informer for WorkLoad type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredWorkloadInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredWorkLoadInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options metav1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.FscV1().Workloads(namespace).List(context.TODO(), options)
+				return client.FscV1().WorkLoads(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options metav1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.FscV1().Workloads(namespace).Watch(context.TODO(), options)
+				return client.FscV1().WorkLoads(namespace).Watch(context.TODO(), options)
 			},
 		},
-		&fschenderiwbev1.Workload{},
+		&fschenderiwbev1.WorkLoad{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *workloadInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredWorkloadInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *workLoadInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredWorkLoadInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *workloadInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&fschenderiwbev1.Workload{}, f.defaultInformer)
+func (f *workLoadInformer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&fschenderiwbev1.WorkLoad{}, f.defaultInformer)
 }
 
-func (f *workloadInformer) Lister() v1.WorkloadLister {
-	return v1.NewWorkloadLister(f.Informer().GetIndexer())
+func (f *workLoadInformer) Lister() v1.WorkLoadLister {
+	return v1.NewWorkLoadLister(f.Informer().GetIndexer())
 }

@@ -25,69 +25,69 @@ import (
 	"k8s.io/client-go/tools/cache"
 )
 
-// WorkloadLister helps list Workloads.
+// WorkLoadLister helps list WorkLoads.
 // All objects returned here must be treated as read-only.
-type WorkloadLister interface {
-	// List lists all Workloads in the indexer.
+type WorkLoadLister interface {
+	// List lists all WorkLoads in the indexer.
 	// Objects returned here must be treated as read-only.
-	List(selector labels.Selector) (ret []*v1.Workload, err error)
-	// Workloads returns an object that can list and get Workloads.
-	Workloads(namespace string) WorkloadNamespaceLister
-	WorkloadListerExpansion
+	List(selector labels.Selector) (ret []*v1.WorkLoad, err error)
+	// WorkLoads returns an object that can list and get WorkLoads.
+	WorkLoads(namespace string) WorkLoadNamespaceLister
+	WorkLoadListerExpansion
 }
 
-// workloadLister implements the WorkloadLister interface.
-type workloadLister struct {
+// workLoadLister implements the WorkLoadLister interface.
+type workLoadLister struct {
 	indexer cache.Indexer
 }
 
-// NewWorkloadLister returns a new WorkloadLister.
-func NewWorkloadLister(indexer cache.Indexer) WorkloadLister {
-	return &workloadLister{indexer: indexer}
+// NewWorkLoadLister returns a new WorkLoadLister.
+func NewWorkLoadLister(indexer cache.Indexer) WorkLoadLister {
+	return &workLoadLister{indexer: indexer}
 }
 
-// List lists all Workloads in the indexer.
-func (s *workloadLister) List(selector labels.Selector) (ret []*v1.Workload, err error) {
+// List lists all WorkLoads in the indexer.
+func (s *workLoadLister) List(selector labels.Selector) (ret []*v1.WorkLoad, err error) {
 	err = cache.ListAll(s.indexer, selector, func(m interface{}) {
-		ret = append(ret, m.(*v1.Workload))
+		ret = append(ret, m.(*v1.WorkLoad))
 	})
 	return ret, err
 }
 
-// Workloads returns an object that can list and get Workloads.
-func (s *workloadLister) Workloads(namespace string) WorkloadNamespaceLister {
-	return workloadNamespaceLister{indexer: s.indexer, namespace: namespace}
+// WorkLoads returns an object that can list and get WorkLoads.
+func (s *workLoadLister) WorkLoads(namespace string) WorkLoadNamespaceLister {
+	return workLoadNamespaceLister{indexer: s.indexer, namespace: namespace}
 }
 
-// WorkloadNamespaceLister helps list and get Workloads.
+// WorkLoadNamespaceLister helps list and get WorkLoads.
 // All objects returned here must be treated as read-only.
-type WorkloadNamespaceLister interface {
-	// List lists all Workloads in the indexer for a given namespace.
+type WorkLoadNamespaceLister interface {
+	// List lists all WorkLoads in the indexer for a given namespace.
 	// Objects returned here must be treated as read-only.
-	List(selector labels.Selector) (ret []*v1.Workload, err error)
-	// Get retrieves the Workload from the indexer for a given namespace and name.
+	List(selector labels.Selector) (ret []*v1.WorkLoad, err error)
+	// Get retrieves the WorkLoad from the indexer for a given namespace and name.
 	// Objects returned here must be treated as read-only.
-	Get(name string) (*v1.Workload, error)
-	WorkloadNamespaceListerExpansion
+	Get(name string) (*v1.WorkLoad, error)
+	WorkLoadNamespaceListerExpansion
 }
 
-// workloadNamespaceLister implements the WorkloadNamespaceLister
+// workLoadNamespaceLister implements the WorkLoadNamespaceLister
 // interface.
-type workloadNamespaceLister struct {
+type workLoadNamespaceLister struct {
 	indexer   cache.Indexer
 	namespace string
 }
 
-// List lists all Workloads in the indexer for a given namespace.
-func (s workloadNamespaceLister) List(selector labels.Selector) (ret []*v1.Workload, err error) {
+// List lists all WorkLoads in the indexer for a given namespace.
+func (s workLoadNamespaceLister) List(selector labels.Selector) (ret []*v1.WorkLoad, err error) {
 	err = cache.ListAllByNamespace(s.indexer, s.namespace, selector, func(m interface{}) {
-		ret = append(ret, m.(*v1.Workload))
+		ret = append(ret, m.(*v1.WorkLoad))
 	})
 	return ret, err
 }
 
-// Get retrieves the Workload from the indexer for a given namespace and name.
-func (s workloadNamespaceLister) Get(name string) (*v1.Workload, error) {
+// Get retrieves the WorkLoad from the indexer for a given namespace and name.
+func (s workLoadNamespaceLister) Get(name string) (*v1.WorkLoad, error) {
 	obj, exists, err := s.indexer.GetByKey(s.namespace + "/" + name)
 	if err != nil {
 		return nil, err
@@ -95,5 +95,5 @@ func (s workloadNamespaceLister) Get(name string) (*v1.Workload, error) {
 	if !exists {
 		return nil, errors.NewNotFound(v1.Resource("workload"), name)
 	}
-	return obj.(*v1.Workload), nil
+	return obj.(*v1.WorkLoad), nil
 }

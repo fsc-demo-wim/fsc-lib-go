@@ -28,7 +28,7 @@ type FscV1Interface interface {
 	RESTClient() rest.Interface
 	KubeControllersConfigurationsGetter
 	NodeTopologiesGetter
-	WorkloadsGetter
+	WorkLoadsGetter
 }
 
 // FscV1Client is used to interact with features provided by the fsc.henderiw.be group.
@@ -44,8 +44,8 @@ func (c *FscV1Client) NodeTopologies(namespace string) NodeTopologyInterface {
 	return newNodeTopologies(c, namespace)
 }
 
-func (c *FscV1Client) Workloads(namespace string) WorkloadInterface {
-	return newWorkloads(c, namespace)
+func (c *FscV1Client) WorkLoads(namespace string) WorkLoadInterface {
+	return newWorkLoads(c, namespace)
 }
 
 // NewForConfig creates a new FscV1Client for the given config.

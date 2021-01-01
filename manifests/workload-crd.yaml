@@ -6,8 +6,8 @@ metadata:
 spec:
   group: fsc.henderiw.be
   names:
-    kind: Workload
-    listKind: WorkloadList
+    kind: WorkLoad
+    listKind: WorkLoadList
     plural: workloads
     singular: workload
   scope: Namespaced

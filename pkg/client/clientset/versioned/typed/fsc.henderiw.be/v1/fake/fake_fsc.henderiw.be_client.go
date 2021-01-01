@@ -36,8 +36,8 @@ func (c *FakeFscV1) NodeTopologies(namespace string) v1.NodeTopologyInterface {
 	return &FakeNodeTopologies{c, namespace}
 }
 
-func (c *FakeFscV1) Workloads(namespace string) v1.WorkloadInterface {
-	return &FakeWorkloads{c, namespace}
+func (c *FakeFscV1) WorkLoads(namespace string) v1.WorkLoadInterface {
+	return &FakeWorkLoads{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

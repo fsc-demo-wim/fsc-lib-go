@@ -3,45 +3,45 @@ package v1
 import metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
 const (
-	// KindWorkload const
-	KindWorkload    = "Workload"
-	// KindWorkloadList const
-	KindWorkloadList = "WorkloadList"
+	// KindWorkLoad const
+	KindWorkLoad = "WorkLoad"
+	// KindWorkLoadList const
+	KindWorkLoadList = "WorkLoadList"
 )
 
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +k8s:openapi-gen=true
 
-// Workload is the Schema for the workload API
-type Workload struct {
-	metav1.TypeMeta   `json:",inline"`
+// WorkLoad is the Schema for the workload API
+type WorkLoad struct {
+	metav1.TypeMeta `json:",inline"`
 
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   WorkloadSpec   `json:"spec,omitempty"`
+	Spec WorkLoadSpec `json:"spec,omitempty"`
 
-	Status WorkloadStatus `json:"status,omitempty"`
+	Status WorkLoadStatus `json:"status,omitempty"`
 }
 
-// WorkloadSpec defines the desired state of Workload
-type WorkloadSpec struct {
+// WorkLoadSpec defines the desired state of WorkLoad
+type WorkLoadSpec struct {
 	// RouteTarget identifies the route target of the workload
 	RouteTarget string `json:"routeTarget,omitempty"`
 
 	// RouteDistinguisher identifies the route distinguisher of the workload
-	RouteDistinguisher string `json:"routeDistinguisher,omitempty"`	
+	RouteDistinguisher string `json:"routeDistinguisher,omitempty"`
 
 	// Vlans defines the vlans attached to the workload
 	Vlans []*Vlan `json:"vlans,omitempty"`
 }
 
-// WorkloadStatus represents the status of the workload configuration
+// WorkLoadStatus represents the status of the workload configuration
 // and the associated endpoints and provisioning status
-type WorkloadStatus struct {
+type WorkLoadStatus struct {
 	// RunningConfig contains the effective config that is running, after
 	// merging the API resource with any nodal interface/vlan status
-	RunningConfig WorkloadSpec `json:"runningConfig,omitempty"`
+	RunningConfig WorkLoadSpec `json:"runningConfig,omitempty"`
 
 	// Devices and its related interface on which this workload is applied
 	Devices []*Device `json:"devices,omitempty"`
@@ -49,31 +49,31 @@ type WorkloadStatus struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// WorkloadList contains a list of workloads
-type WorkloadList struct {
+// WorkLoadList contains a list of workloads
+type WorkLoadList struct {
 	metav1.TypeMeta `json:",inline"`
 	// +optional
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []Workload`json:"items"`
+	Items           []WorkLoad `json:"items"`
 }
 
-// NewWorkload creates a new (zeroed) Workload struct with
+// NewWorkLoad creates a new (zeroed) Workload struct with
 // the TypeMetadata initialized to the current version.
-func NewWorkload() *Workload{
-	return &Workload{
+func NewWorkLoad() *WorkLoad {
+	return &WorkLoad{
 		TypeMeta: metav1.TypeMeta{
-			Kind:       KindWorkload,
+			Kind:       KindWorkLoad,
 			APIVersion: SchemeGroupVersion.String(),
 		},
 	}
 }
 
-// NewWorkloadList creates a new (zeroed) WorkloadList struct with the TypeMetadata
+// NewWorkLoadList creates a new (zeroed) WorkloadList struct with the TypeMetadata
 // initialized to the current version.
-func NewWorkloadList() *WorkloadList {
-	return &WorkloadList{
+func NewWorkLoadList() *WorkLoadList {
+	return &WorkLoadList{
 		TypeMeta: metav1.TypeMeta{
-			Kind:       KindWorkloadList,
+			Kind:       KindWorkLoadList,
 			APIVersion: SchemeGroupVersion.String(),
 		},
 	}

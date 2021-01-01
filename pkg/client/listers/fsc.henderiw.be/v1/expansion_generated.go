@@ -34,10 +34,10 @@ type NodeTopologyListerExpansion interface{}
 // NodeTopologyNamespaceLister.
 type NodeTopologyNamespaceListerExpansion interface{}
 
-// WorkloadListerExpansion allows custom methods to be added to
-// WorkloadLister.
-type WorkloadListerExpansion interface{}
+// WorkLoadListerExpansion allows custom methods to be added to
+// WorkLoadLister.
+type WorkLoadListerExpansion interface{}
 
-// WorkloadNamespaceListerExpansion allows custom methods to be added to
-// WorkloadNamespaceLister.
-type WorkloadNamespaceListerExpansion interface{}
+// WorkLoadNamespaceListerExpansion allows custom methods to be added to
+// WorkLoadNamespaceLister.
+type WorkLoadNamespaceListerExpansion interface{}
