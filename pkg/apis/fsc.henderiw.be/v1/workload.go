@@ -13,7 +13,7 @@ const (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +k8s:openapi-gen=true
 
-// Workload is the Schema for the node topology API
+// Workload is the Schema for the workload API
 type Workload struct {
 	metav1.TypeMeta   `json:",inline"`
 
@@ -45,13 +45,11 @@ type WorkloadStatus struct {
 
 	// Devices and its related interface on which this workload is applied
 	Devices []*Device `json:"devices,omitempty"`
-
 }
-
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// WorkloadList contains a list of NodeTopology
+// WorkloadList contains a list of workloads
 type WorkloadList struct {
 	metav1.TypeMeta `json:",inline"`
 	// +optional
@@ -64,7 +62,7 @@ type WorkloadList struct {
 func NewWorkload() *Workload{
 	return &Workload{
 		TypeMeta: metav1.TypeMeta{
-			Kind:       KindNodeTopology,
+			Kind:       KindWorkload,
 			APIVersion: SchemeGroupVersion.String(),
 		},
 	}
