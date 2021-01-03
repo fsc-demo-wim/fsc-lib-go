@@ -1,4 +1,4 @@
-module github.com/henderiw/fsc-lib-go
+module github.com/fsc-demo-wim/fsc-lib-go
 
 go 1.15
 

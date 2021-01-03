@@ -21,7 +21,7 @@ package fake
 import (
 	"context"
 
-	fschenderiwbev1 "github.com/henderiw/fsc-lib-go/pkg/apis/fsc.henderiw.be/v1"
+	fschenderiwbev1 "github.com/fsc-demo-wim/fsc-lib-go/pkg/apis/fsc.henderiw.be/v1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"

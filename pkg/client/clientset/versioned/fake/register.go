@@ -19,7 +19,7 @@ limitations under the License.
 package fake
 
 import (
-	fscv1 "github.com/henderiw/fsc-lib-go/pkg/apis/fsc.henderiw.be/v1"
+	fscv1 "github.com/fsc-demo-wim/fsc-lib-go/pkg/apis/fsc.henderiw.be/v1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"

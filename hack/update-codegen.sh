@@ -25,7 +25,7 @@ set -o pipefail
 #   k8s.io/kubernetes. The output-base is needed for the generators to output into the vendor dir
 #   instead of the $GOPATH directly. For normal projects this can be dropped.
 $HOME/CodeProjects/tmp/code-generator/generate-groups.sh all \
-  github.com/henderiw/fsc-lib-go/pkg/client github.com/henderiw/fsc-lib-go/pkg/apis \
+  github.com/fsc-demo-wim/fsc-lib-go/pkg/client github.com/fsc-demo-wim/fsc-lib-go/pkg/apis \
   "fsc.henderiw.be:v1" \
   --output-base ../../.. \
   --go-header-file $HOME/CodeProjects/tmp/code-generator/hack/boilerplate.go.txt
@@ -34,8 +34,8 @@ $HOME/CodeProjects/tmp/code-generator/generate-groups.sh all \
 
 # $HOME/CodeProjects/tmp/code-generator/generate-groups.sh \
 #   all \
-#   github.com/henderiw/fsc-lib-go/pkg/client \
-#   github.com/henderiw/fsc-lib-go/pkg/apis \
+#   github.com/fsc-demo-wim/fsc-lib-go/pkg/client \
+#   github.com/fsc-demo-wim/fsc-lib-go/pkg/apis \
 #   "fsc:v1"\
 #   -h $HOME/CodeProjects/tmp/code-generator/hack/boilerplate.go.txt \
 #   -o $HOME/CodeProjects/tmp/code-generator

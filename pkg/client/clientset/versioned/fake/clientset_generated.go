@@ -19,9 +19,9 @@ limitations under the License.
 package fake
 
 import (
-	clientset "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned"
-	fscv1 "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc.henderiw.be/v1"
-	fakefscv1 "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc.henderiw.be/v1/fake"
+	clientset "github.com/fsc-demo-wim/fsc-lib-go/pkg/client/clientset/versioned"
+	fscv1 "github.com/fsc-demo-wim/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc.henderiw.be/v1"
+	fakefscv1 "github.com/fsc-demo-wim/fsc-lib-go/pkg/client/clientset/versioned/typed/fsc.henderiw.be/v1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"

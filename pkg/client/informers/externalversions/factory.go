@@ -23,9 +23,9 @@ import (
 	sync "sync"
 	time "time"
 
-	versioned "github.com/henderiw/fsc-lib-go/pkg/client/clientset/versioned"
-	fschenderiwbe "github.com/henderiw/fsc-lib-go/pkg/client/informers/externalversions/fsc.henderiw.be"
-	internalinterfaces "github.com/henderiw/fsc-lib-go/pkg/client/informers/externalversions/internalinterfaces"
+	versioned "github.com/fsc-demo-wim/fsc-lib-go/pkg/client/clientset/versioned"
+	fschenderiwbe "github.com/fsc-demo-wim/fsc-lib-go/pkg/client/informers/externalversions/fsc.henderiw.be"
+	internalinterfaces "github.com/fsc-demo-wim/fsc-lib-go/pkg/client/informers/externalversions/internalinterfaces"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"

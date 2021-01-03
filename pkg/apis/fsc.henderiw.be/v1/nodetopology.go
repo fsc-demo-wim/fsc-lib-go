@@ -4,7 +4,7 @@ import metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
 const (
 	// KindNodeTopology const
-	KindNodeTopology     = "NodeTopology"
+	KindNodeTopology = "NodeTopology"
 	// KindNodeTopologyList const
 	KindNodeTopologyList = "NodeTopologyList"
 )
@@ -15,11 +15,11 @@ const (
 
 // NodeTopology is the Schema for the node topology API
 type NodeTopology struct {
-	metav1.TypeMeta   `json:",inline"`
+	metav1.TypeMeta `json:",inline"`
 
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   NodeTopologySpec   `json:"spec,omitempty"`
+	Spec NodeTopologySpec `json:"spec,omitempty"`
 }
 
 // NodeTopologySpec defines the desired state of NodeTopology

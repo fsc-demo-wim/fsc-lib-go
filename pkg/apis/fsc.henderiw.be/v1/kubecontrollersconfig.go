@@ -4,7 +4,7 @@ import metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
 const (
 	// KindKubeControllersConfiguration const
-	KindKubeControllersConfiguration     = "KubeControllersConfiguration"
+	KindKubeControllersConfiguration = "KubeControllersConfiguration"
 	// KindKubeControllersConfigurationList const
 	KindKubeControllersConfigurationList = "KubeControllersConfigurationList"
 )
@@ -14,11 +14,11 @@ const (
 
 // KubeControllersConfiguration is the Schema for the kubecontrollersconfigurations API
 type KubeControllersConfiguration struct {
-	metav1.TypeMeta   `json:",inline"`
+	metav1.TypeMeta `json:",inline"`
 	// +optional
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   KubeControllersConfigurationSpec   `json:"spec,omitempty"`
+	Spec KubeControllersConfigurationSpec `json:"spec,omitempty"`
 	// +optional
 	Status KubeControllersConfigurationStatus `json:"status,omitempty"`
 }
