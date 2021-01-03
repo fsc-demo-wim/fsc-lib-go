@@ -46,7 +46,7 @@ spec:
                 type: array
             type: object
           status:
-            description:
+            description: status of the workload
             properties:
               runningConfig:
                 description: runningConfig contains the effective config thata is running
